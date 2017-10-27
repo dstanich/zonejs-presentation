@@ -2,7 +2,7 @@
 **UNDER CONSTRUCTION**
 
 Presentation given to...
-* 2017-11-01: AngularMN (*URL TBD*)
+* 2017-11-01: AngularMN  - [Event Page](https://www.meetup.com/AngularMN/events/244290051/)
 
 ## Overview
 Zone.js is an important part of Angular 2+ but it is rarely discussed in tutorials.  Learn about what zone.js is, how it works, and ways you can use it to make your Angular application better.
