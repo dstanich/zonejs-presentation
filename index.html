@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>What is zone.js and how does it work with Angular?</title>
+
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/sky.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h1 style="font-size:1.25em">What is zone.js<br>and<br>how does it work with Angular?</h1>
+          <h2 style="font-size:.8em;margin-top:3em">David Stanich</h2>
+        </section>
+
+        <section>
+          <h1 style="font-size:1.25em">About Me</h1>
+          <h2 style="font-size:.8em;margin:0">David Stanich</h2>
+          <div style="font-size:.7em;margin:0">
+            | Github: <a href="https://github.com/dstanich" target="_blank">dstanich</a> | Twitter: <a href="https://twitter.com/dstanich" target="_blank">@dstanich</a> |
+          </div>
+          <ul style="margin-top:1em">
+            <li>Software Engineer @ IBM Watson Health</li>
+            <li style="margin-top:.5em"><strong>AngularJS</strong>: several years with multiple apps</li>
+            <li><strong>Angular</strong>: migration started this year</li>
+          </ul>
+        </section>
+      </div>
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+
+    <script>
+      // More info about config & dependencies:
+      // - https://github.com/hakimel/reveal.js#configuration
+      // - https://github.com/hakimel/reveal.js#dependencies
+      Reveal.initialize({
+        history: true,
+        dependencies: [
+          { src: 'plugin/markdown/marked.js' },
+          { src: 'plugin/markdown/markdown.js' },
+          { src: 'plugin/notes/notes.js', async: true },
+          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+        ]
+      });
+    </script>
+  </body>
+</html>
