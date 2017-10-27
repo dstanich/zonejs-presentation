@@ -12,6 +12,8 @@
     <!-- Theme used for syntax highlighting of code -->
     <link rel="stylesheet" href="lib/css/zenburn.css">
 
+    <link rel="stylesheet" href="css/custom.css">
+
     <!-- Printing and PDF exports -->
     <script>
       var link = document.createElement( 'link' );
@@ -22,16 +24,16 @@
     </script>
   </head>
   <body>
-    <div class="reveal">
+    <div class="reveal custom">
       <div class="slides">
         <section>
-          <h1 style="font-size:1.25em">What is zone.js<br>and<br>how does it work with Angular?</h1>
-          <h2 style="font-size:.8em;margin-top:3em">David Stanich</h2>
+          <h1>What is zone.js<br>and<br>how does it work with Angular?</h1>
+          <h2 style="margin-top:3em">David Stanich</h2>
         </section>
 
         <section>
-          <h1 style="font-size:1.25em">About Me</h1>
-          <h2 style="font-size:.8em;margin:0">David Stanich</h2>
+          <h1>About Me</h1>
+          <h2 style="margin:0">David Stanich</h2>
           <div style="font-size:.7em;margin:0">
             | Github: <a href="https://github.com/dstanich" target="_blank">dstanich</a> | Twitter: <a href="https://twitter.com/dstanich" target="_blank">@dstanich</a> |
           </div>
@@ -40,6 +42,102 @@
             <li style="margin-top:.5em"><strong>AngularJS</strong>: several years with multiple apps</li>
             <li><strong>Angular</strong>: migration started this year</li>
           </ul>
+        </section>
+
+        <section>
+          <section>
+            <h1>Angular 101</h1>
+            <pre><code data-trim data-noescape class="bash">
+# Install angular-cli
+npm install -g @angular/cli
+
+# Create brand new project
+ng new my-new-project
+
+# What did that command just do?
+cat package.json
+            </code></pre>
+          </section>
+
+          <section>
+            <h1>Angular stuff - makes sense</h1>
+            <pre><code data-trim data-noescape class="json">
+"dependencies": {
+<mark>  "@angular/animations": "^4.2.4",
+  "@angular/common": "^4.2.4",
+  "@angular/compiler": "^4.2.4",
+  "@angular/core": "^4.2.4",
+  "@angular/forms": "^4.2.4",
+  "@angular/http": "^4.2.4",
+  "@angular/platform-browser": "^4.2.4",
+  "@angular/platform-browser-dynamic": "^4.2.4",
+  "@angular/router": "^4.2.4",</mark>
+  "core-js": "^2.4.1",
+  "rxjs": "^5.4.2",
+  "zone.js": "^0.8.14"
+},
+            </code></pre>
+          </section>
+
+          <section>
+            <h1>Libraries - Seem familiar</h1>
+            <pre><code data-trim data-noescape class="json">
+"dependencies": {
+  "@angular/animations": "^4.2.4",
+  "@angular/common": "^4.2.4",
+  "@angular/compiler": "^4.2.4",
+  "@angular/core": "^4.2.4",
+  "@angular/forms": "^4.2.4",
+  "@angular/http": "^4.2.4",
+  "@angular/platform-browser": "^4.2.4",
+  "@angular/platform-browser-dynamic": "^4.2.4",
+  "@angular/router": "^4.2.4",
+<mark>  "core-js": "^2.4.1",
+  "rxjs": "^5.4.2",</mark>
+  "zone.js": "^0.8.14"
+},
+            </code></pre>
+          </section>
+
+          <section>
+            <h1>zone.js - What the heck is that?</h1>
+            <pre><code data-trim data-noescape class="json">
+"dependencies": {
+  "@angular/animations": "^4.2.4",
+  "@angular/common": "^4.2.4",
+  "@angular/compiler": "^4.2.4",
+  "@angular/core": "^4.2.4",
+  "@angular/forms": "^4.2.4",
+  "@angular/http": "^4.2.4",
+  "@angular/platform-browser": "^4.2.4",
+  "@angular/platform-browser-dynamic": "^4.2.4",
+  "@angular/router": "^4.2.4",
+  "core-js": "^2.4.1",
+  "rxjs": "^5.4.2",
+<mark>  "zone.js": "^0.8.14"</mark>
+},
+            </code></pre>
+          </section>
+        </section>
+
+        <section>
+          <h1>zone.js</h1>
+        </section>
+
+        <section>
+          <h1>zone.js Examples</h1>
+        </section>
+
+        <section>
+          <h1>Angular and zone.js</h1>
+        </section>
+
+        <section>
+          <h1>NgZone</h1>
+        </section>
+
+        <section>
+          <h1>Change Detection</h1>
         </section>
       </div>
     </div>
