@@ -1,5 +1,5 @@
-function init() {
-  console.log('init()', Zone.current);
+function setTimeoutExample() {
+  console.log('setTimeoutExample()', Zone.current);
   simpleSetTimeout();
 }
 
