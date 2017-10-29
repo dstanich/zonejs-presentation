@@ -1,5 +1,5 @@
 function multipleForksExample() {
-  console.log('multipleForks()', Zone.current);
+  console.log('multipleForksExample()', Zone.current);
 
   // First fork; sets up onFork hook
   const newFork = Zone.current.fork({
