@@ -121,19 +121,173 @@ cat package.json
         </section>
 
         <section>
-          <h1>zone.js</h1>
-        </section>
-
-        <section>
-          <h1>zone.js Examples</h1>
+          <section>
+            <h1>zone.js</h1>
+            <div style="font-size: .9em">A Zone is an execution context that persists across async tasks, and allows the creator of the zone to <strong>observe</strong> and <strong>control</strong> execution of the code within the zone.</div>
+            <div style="font-size: .75em;text-align:right;"><a href="https://docs.google.com/document/d/1F5Ug0jcrm031vhSMJEOgp1l-Is-Vf0UCNDY-LsQtAIY/edit#" target="_blank">- Zone Primer Doc</a></div>
+            <div style="margin-top:2em">Proposed for <a href="https://github.com/tc39/proposals/blob/master/stage-0-proposals.md" target="_blank">EcmaScript</a>, currently blocked</div>
+            <div style="margin-top:2em;">
+              | <a href="https://github.com/angular/zone.js" target="_blank">zone.js Github</a>| <a href="https://github.com/angular/zone.js/blob/master/dist/zone.js.d.ts" target="_blank">zone.js API</a> | <a href="https://docs.google.com/document/d/1F5Ug0jcrm031vhSMJEOgp1l-Is-Vf0UCNDY-LsQtAIY/edit#" target="_blank">Zone Primer Doc</a> |
+            </div>
+          </section>
+          <section>
+            <h1>What can it do?</h1>
+            <ul>
+              <li>Defines async tasks into types</li>
+              <li>Monkey patches async browser APIs</li>
+              <li>Create new (forked) zones and manage context</li>
+              <li>Control what zone code runs inside</li>
+              <li>Observe start, stop, scheduling of tasks</li>
+            </ul>
+          </section>
+          <section>
+            <h1>Event Types</h1>
+            <table style="font-size: .7em; margin-top: 1em;">
+              <thead>
+                <th>Type</th>
+                <th>Usage</th>
+                <th>Example</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="terminal">Microtask</span></td>
+                  <td>Guaranteed to run once and immediately</td>
+                  <td>promise.then()</td>
+                </tr>
+                <tr>
+                  <td><span class="terminal">Macrotask</span></td>
+                  <td>Returns value of property with given key</td>
+                  <td>Work to be done later that is not guaranteed to run.  Able to cancel.</td>
+                </tr>
+                <tr>
+                  <td><span class="terminal">EventTask</span></td>
+                  <td>Searches parents for zone with given key</td>
+                  <td>MouseClick, KeyboardEvent, 'on' properties, ...</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+          <section>
+            <h1>Monkey patched APIs</h1>
+            <div style="text-align:left;font-size:.6em"><strong>Monkey patching</strong></div>
+            <div style="font-size: .9em;text-align:left;margin-left:.5em;margin-right:.5em">Override a function to execute your own code as part of any future calls to the function.</div>
+            <div style="text-align:left;font-size:.6em;margin-top:1em"><strong>zone.js</strong></div>
+            <div style="text-align:left;margin-left:.5em;margin-right:.5em;">
+              <ul>
+                <li>Patches all browser async APIs</li>
+                <li>fetch(), setTimeout(), mouse events, ...</li>
+                <li><a href="https://github.com/angular/zone.js/blob/master/STANDARD-APIS.md" target="_blank">All patched APIs</a></li>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h1>Managing zones</h1>
+            <ul>
+              <li>Always a <strong>root</strong> zone by default</li>
+              <li>Ability to create new child zones</li>
+              <li>Store shallow immutable properties</li>
+            </ul>
+            <table style="font-size: .7em; margin-top: 1em;">
+              <thead>
+                <th>API</th>
+                <th>Usage</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="terminal">Zone.current</span></td>
+                  <td>Returns currently active zone</td>
+                </tr>
+                <tr>
+                  <td><span class="terminal">zoneObj.fork(ZoneSpec)</span></td>
+                  <td>Create a new child zone.  <a href="https://github.com/angular/zone.js/blob/master/dist/zone.js.d.ts#L288" target="_blank">ZoneSpec</a></td>
+                </tr>
+                <tr>
+                  <td><span class="terminal">zoneObj.get(key)</span></td>
+                  <td>Returns value of property with given key</td>
+                </tr>
+                <tr>
+                  <td><span class="terminal">zoneObj.getZoneWith(key)</span></td>
+                  <td>Searches parents for zone with given key</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+          <section>
+            <h1>Controlling what runs in a zone</h1>
+            <ul>
+              <li>Execute/schedule code within a specific zone</li>
+              <li>Segments code so it's easier to control</li>
+              <li>Consolidated error handling</li>
+            </ul>
+            <table style="font-size: .7em; margin-top: 1em;">
+              <thead>
+                <th>API</th>
+                <th>Usage</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="terminal">zoneObj.run(fn)</span></td>
+                  <td>Run function within zoneObj</td>
+                </tr>
+                <tr>
+                  <td><span class="terminal">zoneObj.runGuarded(fn)</span></td>
+                  <td>Run function within zoneObj and catch all exceptions</td>
+                </tr>
+                <tr>
+                  <td><span class="terminal">zoneObj.wrap(fn)</span></td>
+                  <td>Returns function wrapping fn and restoring zone and this</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+          <section>
+            <h1>Observing with zone hooks</h1>
+            <div style="font-size:.8em">Part of the ZoneSpec.  Define handlers for what you need.</div>
+            <table style="font-size: .7em; margin-top: 1em;">
+              <thead>
+                <th>Hook</th>
+                <th>Usage</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="terminal">onFork</span></td>
+                  <td>Called when the zone is forked.</td>
+                </tr>
+                <tr>
+                  <td><span class="terminal">onIntercept</span></td>
+                  <td>Called when wrap() is called</td>
+                </tr>
+                <tr>
+                  <td><span class="terminal">onInvoke</span></td>
+                  <td>Called when run() callback is executed</td>
+                </tr>
+                <tr>
+                  <td><span class="terminal">onHandleError</span></td>
+                  <td>Called when an error is </td>
+                </tr>
+                <tr>
+                  <td><span class="terminal">onScheduleTask</span></td>
+                  <td>Called when a task is scheduled</td>
+                </tr>
+                <tr>
+                  <td><span class="terminal">onInvokeTask</span></td>
+                  <td>Called when a scheduled task is run</td>
+                </tr>
+                <tr>
+                  <td><span class="terminal">onCancelTask</span></td>
+                  <td>Called when a scheduled task is canceled</td>
+                </tr>
+                <tr>
+                  <td><span class="terminal">onHasTask</span></td>
+                  <td>Called when a task queue is modified</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
         </section>
 
         <section>
           <h1>Angular and zone.js</h1>
-        </section>
-
-        <section>
-          <h1>NgZone</h1>
         </section>
 
         <section>

@@ -5,3 +5,7 @@
 .custom h2 {
   font-size: .8em;
 }
+
+.custom .terminal {
+  font-family: Courier New, Courier, monospace;
+}
