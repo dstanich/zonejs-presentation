@@ -18,5 +18,10 @@ All code is available in this repository in branches.
 ### Branches
 | Branch | Content |
 |--------|---------|
-| gh-pages | Presentation |
-| master | All final code |
+| `gh-pages` | Presentation |
+| `master` | All final code |
+| `00-zonejs-starter` | Initial zone.js branch with no functionality |
+| `01-zonejs-basic-info` | Zone.current, patched async calls, and call stack |
+| `02-zonejs-forking` | Forking, run(), and zone changing |
+| `03-zonejs-hooks` | Forking off another fork, onFork hook |
+| `04-zonejs-timing` | Practical use by creating ZoneSpec that will time executing of code within the zone |
