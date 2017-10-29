@@ -10,5 +10,8 @@
   "license": "ISC",
   "dependencies": {
     "zone.js": "^0.8.17"
+  },
+  "devDependencies": {
+    "http-server": "^0.10.0"
   }
 }
