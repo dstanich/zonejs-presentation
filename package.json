@@ -5,5 +5,5 @@
     "preinstall": "cd js-examples && npm install && cd ../ngx-examples && npm install"
   },
   "author": "",
-  "license": "MIT"
+  "license": "ISC"
 }
