@@ -121,6 +121,13 @@ cat package.json
         </section>
 
         <section>
+          <h1>So why is it there?</h1>
+          <div style="text-align:left;font-size:.7em">Short answer:</div>
+          <div style="font-size:2em;">Change detection</div>
+          <div style="margin-top:3em;">Keep this in mind over the next slides</div>
+        </section>
+
+        <section>
           <section>
             <h1>zone.js</h1>
             <div style="font-size: .9em">A Zone is an execution context that persists across async tasks, and allows the creator of the zone to <strong>observe</strong> and <strong>control</strong> execution of the code within the zone.</div>
@@ -287,7 +294,96 @@ cat package.json
         </section>
 
         <section>
-          <h1>Angular and zone.js</h1>
+          <h1>zone.js Demos</h1>
+          <div style="font-size: .7em">
+            <a href="https://github.com/dstanich/zonejs-presentation#branches" target="_blank">Source - js-examples/</a>
+          </div>
+        </section>
+
+        <section>
+          <section>
+            <h1>Angular and zone.js</h1>
+            <div style="margin-top:1em;">Angular uses zone.js for intelligently kicking off change detection on components.</div>
+            <div style="margin-top:2em;">State is changed in applications by async tasks.  zone.js allows Angular to detect and react to them.</div>
+          </section>
+          <section>
+            <h1>How does it work?</h1>
+            <ul>
+              <li>Angular creates fork: NgZone</li>
+              <li>All code runs within NgZone</li>
+              <li><a href="https://angular.io/api/core/NgZone" target="_blank">NgZone API</a> to observe and control</li>
+              <li>Provides better stack traces via <a href="https://github.com/angular/zone.js/blob/master/dist/long-stack-trace-zone.js" target="_blank">long stack trace zone</a></li>
+            </ul>
+          </section>
+          <section>
+            <h1>Angular triggering change detection</h1>
+            <a style="font-size:.75em" href="https://github.com/angular/angular/blob/9bbf009dff002cc4d100a52872fa609874e49d26/packages/core/src/application_ref.ts" target="_blank">application_ref.ts:</a>
+            <pre><code data-trim data-noescape class="ts">
+constructor() {
+  this._zone.onMicrotaskEmpty.subscribe(
+    {next: () => { this._zone.run(() => { this.tick(); }); }});
+}
+
+/**
+  * Invoke this method to explicitly process change detection
+  * and its side-effects.
+  * ...
+  */
+tick(): void {
+  // ...
+  this._views.forEach((view) => view.detectChanges());
+  // ...
+}
+            </code></pre>
+          </section>
+          <section>
+            <h1>NgZone</h1>
+            <div style="font-size:.65em">Full <a href="https://angular.io/api/core/NgZone" target="_blank">NgZone API</a></div>
+            <table style="font-size: .7em; margin-top: 1em;">
+              <thead>
+                <th>API</th>
+                <th>Usage</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="terminal">onUnstable</span></td>
+                  <td>EventEmitter that notifies when code begins to execute in the zone.</td>
+                </tr>
+                <tr>
+                  <td><span class="terminal">onMicrotaskEmpty</span></td>
+                  <td>EventEmitter that notifies when microtask queue is empty.  May fire more than once.</td>
+                </tr>
+                <tr>
+                  <td><span class="terminal">onStable</span></td>
+                  <td>EventEmitter that notifies when the last onMicrotaskEmpty fires.</td>
+                </tr>
+                <tr>
+                  <td><span class="terminal">run() / runGuarded()</span></td>
+                  <td>Execute code within NgZone. Same as zone.js.</td>
+                </tr>
+                <tr>
+                  <td><span class="terminal">runOutsideAngular()</span></td>
+                  <td>Execute code within parent zone, will not trigger change detection.</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+          <section>
+            <h1>Utilize NgZone</h1>
+            <ul>
+              <li>Long stack trace enabled by default</li>
+              <li>Use APIs to avoid excessive change detection</li>
+              <li>runOutsideAngular() when UI updates are not needed</li>
+              <li>onStable() to wait for intensive operations</li>
+            </ul>
+          </section>
+        </section>
+
+        <section>
+          <h1>Angular Demos</h1>
+          <div style="font-size: .7em">
+            <a href="https://github.com/dstanich/zonejs-presentation#branches" target="_blank">Source - ngx-examples/</a>
+          </div>
         </section>
 
         <section>
