@@ -30,8 +30,10 @@ export class AppComponent implements OnInit {
       console.log('Stable');
     });
 
-    this.http.get('https://api.spacexdata.com/v1/launches').subscribe(response => {
-      console.log(response);
+    this.zone.runOutsideAngular(() => {
+      this.http.get('https://api.spacexdata.com/v1/launches').subscribe(response => {
+        console.log(response);
+      });
     });
   }
 }
