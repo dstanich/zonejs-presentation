@@ -5,10 +5,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule, MatCardModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
+import { LaunchItemComponent } from './launch-item/launch-item.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LaunchItemComponent
   ],
   imports: [
     BrowserModule,

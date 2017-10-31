@@ -2,13 +2,6 @@
   <span>Angular and zone.js</span>
 </mat-toolbar>
 
-<div style="display:flex">
-  <mat-card style="flex: 1 1 50%; margin: 10px;">
-    <mat-card-header>
-      <mat-card-title>Test</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      Test content
-    </mat-card-content>
-  </mat-card>
+<div style="display:flex; flex-wrap:wrap;">
+  <app-launch-item *ngFor="let launch of launches" [data]="launch"></app-launch-item>
 </div>
