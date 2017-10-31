@@ -1,5 +1,6 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Launch } from './launch.model';
 import 'zone.js';
 
 @Component({
@@ -8,7 +9,9 @@ import 'zone.js';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'app';
+
+  changeDetectionCount: number = 0;
+  launches: Array<Launch> = [];
 
   constructor(
     private zone: NgZone,
@@ -24,14 +27,15 @@ export class AppComponent implements OnInit {
 
     this.zone.onMicrotaskEmpty.subscribe(() => {
       console.log('Microtask empty -- change detection is run');
+      this.changeDetectionCount++;
     });
 
     this.zone.onStable.subscribe(() => {
-      console.log('Stable');
+      console.log('Stable. Change detection count: ', this.changeDetectionCount);
     });
 
     this.zone.runOutsideAngular(() => {
-      this.http.get('https://api.spacexdata.com/v1/launches').subscribe(response => {
+      this.http.get('http://localhost:3000/launches').subscribe(response => {
         console.log(response);
       });
     });
