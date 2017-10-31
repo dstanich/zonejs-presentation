@@ -1,6 +1,6 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Launch } from './launch-item/launch.model';
+import { Launch } from './launch.model';
 import 'zone.js';
 
 @Component({
