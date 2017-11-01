@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatToolbarModule, MatCardModule } from '@angular/material';
+import { MatToolbarModule, MatCardModule, MatButtonModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { LaunchItemComponent } from './launch-list/launch-item/launch-item.component';
@@ -22,7 +22,8 @@ import { LaunchDataService } from './launch-data.service';
     HttpClientModule,
     BrowserAnimationsModule,
     MatToolbarModule,
-    MatCardModule
+    MatCardModule,
+    MatButtonModule
   ],
   providers: [LaunchDataService],
   bootstrap: [AppComponent]
