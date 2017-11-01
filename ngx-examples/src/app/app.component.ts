@@ -12,11 +12,17 @@ export class AppComponent implements OnInit {
 
   changeDetectionCount: number = 0;
   launches: Array<Launch> = [];
+  selectedLaunch: Launch;
 
   constructor(
     private zone: NgZone,
     private http: HttpClient
   ) {}
+
+  test(a) {
+    console.log(a);
+    this.selectedLaunch = a;
+  }
 
   ngOnInit() {
     console.log('Current zone', Zone.current);

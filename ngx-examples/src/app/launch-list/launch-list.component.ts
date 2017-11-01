@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Launch } from '../launch.model';
 
 @Component({
@@ -9,6 +9,7 @@ import { Launch } from '../launch.model';
 export class LaunchListComponent implements OnInit {
 
   @Input() launches: Array<Launch>;
+  @Output() launchChange: EventEmitter<Launch> = new EventEmitter();
 
   constructor() { }
 
