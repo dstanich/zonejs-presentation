@@ -4,7 +4,7 @@
 
 <div style="flex: 1 1 auto; display:flex; overflow:hidden;">
   <div style="flex: 0 0 40%;margin: 10px;overflow:auto;">
-    <app-launch-list [launches]="launches" (launchChange)="test($event)"></app-launch-list>
+    <app-launch-list [launches]="launches" (launchChange)="selectedLaunch = $event"></app-launch-list>
   </div>
   <div style="flex: 1 0 35%;margin: 10px;overflow:auto;">
     <app-launch-details [launch]="selectedLaunch"></app-launch-details>

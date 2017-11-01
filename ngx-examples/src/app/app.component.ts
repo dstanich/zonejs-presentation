@@ -19,11 +19,6 @@ export class AppComponent implements OnInit {
     private http: HttpClient
   ) {}
 
-  test(a) {
-    console.log(a);
-    this.selectedLaunch = a;
-  }
-
   ngOnInit() {
     console.log('Current zone', Zone.current);
 
