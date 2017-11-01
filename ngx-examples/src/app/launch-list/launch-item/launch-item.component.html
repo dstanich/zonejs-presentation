@@ -1,0 +1,10 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{getLaunchTitle()}}</mat-card-title>
+    <mat-card-subtitle>{{data.launch_date_utc}}</mat-card-subtitle>
+    <img mat-card-avatar [src]="data.links.mission_patch">
+  </mat-card-header>
+  <mat-card-content>
+    {{data.details}}
+  </mat-card-content>
+</mat-card>

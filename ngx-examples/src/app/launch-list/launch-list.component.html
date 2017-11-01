@@ -1,0 +1,4 @@
+<app-launch-item *ngFor="let launch of launches"
+                 [data]="launch"
+                 (click)="launchChange.emit(launch)">
+</app-launch-item>
