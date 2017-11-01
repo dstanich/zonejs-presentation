@@ -1,7 +1,10 @@
-<mat-card>
-    <mat-card-content>
+<mat-card *ngIf="launch">
+  <mat-card-content>
+    <div *ngIf="launch">
+      <h3>Launch Details</h3>
       <pre>
         {{launch | json}}
       </pre>
-    </mat-card-content>
-  </mat-card>
+    </div>
+  </mat-card-content>
+</mat-card>
