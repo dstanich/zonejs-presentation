@@ -2,8 +2,8 @@
   "name": "zonejs-presentation",
   "version": "1.0.0",
   "scripts": {
-    "preinstall": "cd js-examples && npm install && cd ../ng-examples && npm install"
+    "preinstall": "cd js-examples && npm install && cd ../ngx-examples && npm install"
   },
   "author": "",
-  "license": "MIT"
+  "license": "ISC"
 }
