@@ -4,7 +4,7 @@
 
 <div style="flex: 1 1 auto; display:flex; flex-wrap:wrap;overflow:hidden;">
   <div style="flex: 0 1 40%;margin: 10px;overflow:auto;">
-    <app-launch-item *ngFor="let launch of launches" [data]="launch"></app-launch-item>
+    <app-launch-list [launches]="launches"></app-launch-list>
   </div>
   <div style="flex: 1 1 auto;margin: 10px;overflow:hidden;">More data</div>
 </div>
