@@ -129,6 +129,14 @@ cat package.json
         </section>
 
         <section>
+          <h1>Key Browser Concepts</h1>
+          <ul>
+            <li>Async events and tasks</li>
+            <li>Monkey patching functions</li>
+          </ul>
+        </section>
+
+        <section>
           <section>
             <h1>zone.js</h1>
             <div style="font-size: .9em">A Zone is an execution context that persists across async tasks, and allows the creator of the zone to <strong>observe</strong> and <strong>control</strong> execution of the code within the zone.</div>
@@ -141,11 +149,10 @@ cat package.json
           <section>
             <h1>What can it do?</h1>
             <ul>
-              <li>Defines async tasks into types</li>
-              <li>Monkey patches async browser APIs</li>
+              <li>Maps all async events into tasks</li>
               <li>Create new (forked) zones and manage context</li>
               <li>Control what zone code runs inside</li>
-              <li>Observe start, stop, scheduling of tasks</li>
+              <li>Observe starting, stopping, and scheduling of tasks</li>
             </ul>
           </section>
           <section>
@@ -164,29 +171,16 @@ cat package.json
                 </tr>
                 <tr>
                   <td><span class="terminal">Macrotask</span></td>
-                  <td>Returns value of property with given key</td>
                   <td>Work to be done later that is not guaranteed to run.  Able to cancel.</td>
+                  <td>setTimeout, setInterval, requestAnimationFrame</td>
                 </tr>
                 <tr>
                   <td><span class="terminal">EventTask</span></td>
-                  <td>Searches parents for zone with given key</td>
+                  <td>Task may execute zero or more times with an unknown delay</td>
                   <td>MouseClick, KeyboardEvent, 'on' properties, ...</td>
                 </tr>
               </tbody>
             </table>
-          </section>
-          <section>
-            <h1>Monkey patched APIs</h1>
-            <div style="text-align:left;font-size:.6em"><strong>Monkey patching</strong></div>
-            <div style="font-size: .9em;text-align:left;margin-left:.5em;margin-right:.5em">Override a function to execute your own code as part of any future calls to the function.</div>
-            <div style="text-align:left;font-size:.6em;margin-top:1em"><strong>zone.js</strong></div>
-            <div style="text-align:left;margin-left:.5em;margin-right:.5em;">
-              <ul>
-                <li>Patches all browser async APIs</li>
-                <li>fetch(), setTimeout(), mouse events, ...</li>
-                <li><a href="https://github.com/angular/zone.js/blob/master/STANDARD-APIS.md" target="_blank">All patched APIs</a></li>
-              </ul>
-            </div>
           </section>
           <section>
             <h1>Managing zones</h1>
@@ -271,7 +265,7 @@ cat package.json
                 </tr>
                 <tr>
                   <td><span class="terminal">onHandleError</span></td>
-                  <td>Called when an error is </td>
+                  <td>Called when an error is handled by zone</td>
                 </tr>
                 <tr>
                   <td><span class="terminal">onScheduleTask</span></td>
