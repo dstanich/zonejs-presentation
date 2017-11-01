@@ -29,6 +29,7 @@
         <section>
           <h1>What is zone.js<br>and<br>how does it work with Angular?</h1>
           <h2 style="margin-top:3em">David Stanich</h2>
+          <h2><a href="https://github.com/dstanich/zonejs-presentation" target="_blank">https://github.com/dstanich/zonejs-presentation</a></h2>
         </section>
 
         <section>
@@ -387,7 +388,24 @@ tick(): void {
         </section>
 
         <section>
-          <h1>Change Detection</h1>
+          <h1>ChangeDetectionStrategy.OnPush</h1>
+          <div style="margin-bottom:1.7em">Less awkward way to do less change detection</div>
+          <ul>
+            <li>Set on per component level</li>
+            <li>Will NOT run change detection unless <b>REFERENCE</b> of input changes</li>
+            <li>Will NOT run change detection on children if input hasn't changed</li>
+            <li>Force change detection via <code>ChangeDetectorRef</code></li>
+          </ul>
+        </section>
+
+        <section>
+          <h1>TL;DR</h1>
+          <ul>
+            <li>zone.js helps change detection run</li>
+            <li>Hooks exist to know when tasks happen</li>
+            <li>APIs exist to run code that hides from zone.js</li>
+            <li>OnPush detection simple way to get benefits without having to know about zones</li>
+          </ul>
         </section>
       </div>
     </div>
