@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { LaunchItemComponent } from './launch-list/launch-item/launch-item.component';
 import { LaunchListComponent } from './launch-list/launch-list.component';
 import { LaunchDetailsComponent } from './launch-details/launch-details.component';
+import { LaunchDataService } from './launch-data.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,7 @@ import { LaunchDetailsComponent } from './launch-details/launch-details.componen
     MatToolbarModule,
     MatCardModule
   ],
-  providers: [],
+  providers: [LaunchDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

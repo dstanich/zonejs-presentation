@@ -1,7 +1,7 @@
 import { Component, OnInit, NgZone } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Launch } from './launch.model';
 import 'zone.js';
+import { LaunchDataService } from './launch-data.service';
 
 @Component({
   selector: 'app-root',
@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
 
   constructor(
     private zone: NgZone,
-    private http: HttpClient
+    private launchDataService: LaunchDataService
   ) {}
 
   ngOnInit() {
@@ -36,7 +36,7 @@ export class AppComponent implements OnInit {
     });
 
     this.zone.runOutsideAngular(() => {
-      this.http.get('https://api.spacexdata.com/v1/launches').subscribe((response: Array<any>) => {
+      this.launchDataService.getLaunches().subscribe((response: Array<any>) => {
         this.zone.run(() => {
           this.launches = response.reverse();
         });
