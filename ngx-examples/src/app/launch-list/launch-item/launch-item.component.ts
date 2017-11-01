@@ -1,10 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 import { Launch } from '../../launch.model';
 
 @Component({
   selector: 'app-launch-item',
   templateUrl: './launch-item.component.html',
-  styleUrls: ['./launch-item.component.css']
+  styleUrls: ['./launch-item.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LaunchItemComponent implements OnInit {
 

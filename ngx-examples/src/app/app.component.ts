@@ -1,4 +1,4 @@
-import { Component, OnInit, NgZone } from '@angular/core';
+import { Component, OnInit, NgZone, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { Launch } from './launch.model';
 import 'zone.js';
 import { LaunchDataService } from './launch-data.service';
@@ -6,7 +6,8 @@ import { LaunchDataService } from './launch-data.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent implements OnInit {
 
@@ -16,7 +17,8 @@ export class AppComponent implements OnInit {
 
   constructor(
     private zone: NgZone,
-    private launchDataService: LaunchDataService
+    private launchDataService: LaunchDataService,
+    private changeDetector: ChangeDetectorRef
   ) {}
 
   ngOnInit() {
@@ -35,12 +37,9 @@ export class AppComponent implements OnInit {
       console.log('Stable. Change detection count: ', this.changeDetectionCount);
     });
 
-    this.zone.runOutsideAngular(() => {
-      this.launchDataService.getLaunches().subscribe((response: Array<any>) => {
-        this.zone.run(() => {
-          this.launches = response.reverse();
-        });
-      });
+    this.launchDataService.getLaunches().subscribe((response: Array<any>) => {
+      this.launches = response.reverse();
+      this.changeDetector.detectChanges();
     });
   }
 }
