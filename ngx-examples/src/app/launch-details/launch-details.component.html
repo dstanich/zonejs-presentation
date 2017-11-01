@@ -1,17 +1,17 @@
 <mat-card *ngIf="launch" >
-    <mat-card-content>
-      <button mat-raised-button (click)="fetchRocketDetails()">Fetch Rocket Details</button>
-      <div *ngIf="rocket">
-        <h3>Rocket Details</h3>
-        <pre>
-          {{rocket | json}}
-        </pre>
-      </div>
-      <div *ngIf="launch">
-        <h3>Launch Details</h3>
-        <pre>
-          {{launch | json}}
-        </pre>
-      </div>
-    </mat-card-content>
-  </mat-card>
+  <mat-card-content>
+    <button mat-raised-button (click)="fetchRocketDetails()">Fetch Rocket Details</button>
+    <div *ngIf="rocket">
+      <h3>Rocket Details</h3>
+      <pre>
+        {{rocket | json}}
+      </pre>
+    </div>
+    <div *ngIf="launch">
+      <h3>Launch Details</h3>
+      <pre>
+        {{launch | json}}
+      </pre>
+    </div>
+  </mat-card-content>
+</mat-card>
