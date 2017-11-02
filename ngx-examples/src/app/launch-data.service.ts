@@ -6,8 +6,8 @@ import { Launch } from './launch.model';
 @Injectable()
 export class LaunchDataService {
 
-  // private _apiPrefix = 'https://api.spacexdata.com/v1/';
-  private _apiPrefix = 'http://localhost:3000/';
+  private _apiPrefix = 'https://api.spacexdata.com/v1/';
+  // private _apiPrefix = 'http://localhost:3000/';
 
   constructor(
     private http: HttpClient
